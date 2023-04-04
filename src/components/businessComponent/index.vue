@@ -1,11 +1,16 @@
 <template>
-    <div class="main">
+    <div class="main common-style ">
         <h1>祖先级（组件最外层）</h1>
+        <h3>
+            我的年龄是： <span style="color:blue"> 【{{ age }}】</span>  
+        </h3>
         <h4>
-            这是调用者的数据：【{{ transferData }}】
+            这是调用者的数据： <span style="color:green"> 【{{ transferData }}】</span> 
         </h4>
-        <slot name="customSlot" slotData="这是slotData"></slot>
+        <slot name="customSlot"></slot>
+        <slot name="customScopedSlot" slotData="这是slotData"></slot>
         <a-button type="primary" @click="onChangeAge">点我给调用者加一岁</a-button>
+        <a-button type="primary" @click="onChangeMyAge">点我给自己加一岁</a-button>
 
         <father />
 
@@ -30,7 +35,8 @@ export default {
     },
     data() {
         return {
-            greatGrandsonData:null
+            greatGrandsonData:null,
+            age:0
         }
     },
     methods: {
@@ -39,6 +45,9 @@ export default {
         },
         getGreatGrandsonData(data){
             this.greatGrandsonData  = data
+        },
+        onChangeMyAge(){
+            this.age+=1
         }
     },
     mounted(){
@@ -46,20 +55,20 @@ export default {
     },
     provide() {
         return {
+            componentScopedSlots: this.$scopedSlots,
             componentSlots: this.$slots,
             componentThis: this,
             componentData: this._props,
+            ancestorAge:this.age,
             // 响应式注入
-            // getAllSlots: () => this.$slots
+            // getAncestorAge: () => this.age
         };
     },
 }
 </script>
 <style scoped>
 .main {
-    height: 90vh;
     width: 90vw;
     background-color: aqua;
-    border: 1px solid #2c3e50
 }
 </style>

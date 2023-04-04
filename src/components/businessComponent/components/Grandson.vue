@@ -1,5 +1,5 @@
 <template >
-    <div  class="grandson">
+    <div  class="common-style  grandson">
       
       <h1>我是孙子</h1>
 

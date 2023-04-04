@@ -1,17 +1,21 @@
 <template>
-    <div class="home">
+    <div class="home common-style ">
         <h1>调用者</h1>
         <h2>
-            我的年龄是：{{ age }},性别是：{{ isMan ? '男' : '女' }}
-        </h2>
-        <h4>
-            曾孙子的年龄是：{{ greatGrandsonAge }}
-        </h4>
+            我的年龄是： <span style="color:tomato">【{{ age }}】</span>  ,性别是： <span style="color:fuchsia">【 {{ isMan ? '男' : '女' }}】</span>   
+        </h2> 
+        <h3>
+            曾孙子的年龄是： <span style="color:sienna">【{{ greatGrandsonAge }}】</span> 
+        </h3>
         <a-button type="primary" @click="onChangeSex">改变性别</a-button>
 
-        <businessComponent ref='businessComponent' :transferData="transferData" :isMan='isMan' @addAge="addAge" @switchSex="onChangeSex" @getGreatGrandsonData="getGreatGrandsonData" >
-            <template slot="customSlot">
+        <businessComponent ref='businessComponent' :transferData="transferData" :isMan='isMan' @addAge="addAge"
+            @switchSex="onChangeSex" @getGreatGrandsonData="getGreatGrandsonData">
+            <template slot="customSlot" >
                 <h2 style="color:red">这是自定义slot</h2>
+            </template>
+            <template slot="customScopedSlot"  slot-scope="data">
+                <h2 style="color:blue">这是自定义ScopedSlot,【{{ data.slotData }}】</h2>
             </template>
         </businessComponent>
     </div>
@@ -32,11 +36,11 @@ export default {
             transferData: 'hello,我是调用者。我给你传递了一个字符串',
             age: 0,
             isMan: true,
-            customSlotData:'我是slot的数据',
-            greatGrandsonAge:0,
+            customSlotData: '我是slot的数据',
+            greatGrandsonAge: 0,
         }
     },
-    mounted(){
+    mounted() {
     },
     methods: {
         addAge() {
@@ -45,16 +49,16 @@ export default {
         onChangeSex() {
             this.isMan = !this.isMan
         },
-        getGreatGrandsonData(age){
+        getGreatGrandsonData(age) {
             this.greatGrandsonAge = age
-            console.log("***this.$refs.businessComponent.greatGrandsonData****",this.$refs.businessComponent.greatGrandsonData);
+            console.log("***this.$refs.businessComponent.greatGrandsonData****", this.$refs.businessComponent.greatGrandsonData);
         }
     },
 }
 </script>
 <style scoped>
 .home {
-    height: 100vh;
     width: 100vw;
     background-color: aquamarine;
-}</style>
+}
+</style>
