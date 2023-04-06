@@ -51,7 +51,9 @@ export default {
         }
     },
     mounted(){
-        console.log(this);
+        console.log("this.$listeners",this.$listeners);
+        console.log("this.$attrs",this.$attrs);
+
     },
     provide() {
         return {

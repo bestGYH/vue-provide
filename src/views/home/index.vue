@@ -9,7 +9,7 @@
         </h3>
         <a-button type="primary" @click="onChangeSex">改变性别</a-button>
 
-        <businessComponent ref='businessComponent' :transferData="transferData" :isMan='isMan' @addAge="addAge"
+        <businessComponent ref='businessComponent' :transferData="transferData" :isMan='isMan' testAtters='testAtters' @addAge="addAge"
             @switchSex="onChangeSex" @getGreatGrandsonData="getGreatGrandsonData">
             <template slot="customSlot" >
                 <h2 style="color:red">这是自定义slot</h2>

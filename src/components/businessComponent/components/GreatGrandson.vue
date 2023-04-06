@@ -100,12 +100,10 @@ export default {
         getCustomEvents() {
             const listeners = this.componentThis.$listeners;
             this.listenersEvents = {};
-            console.log("****listeners***", listeners);
             this.listenersEvents = { ...listeners };
         },
         onChangeAge() {
             this.grandSonAge += 1
-            console.log("***this.listenersEvents**", this.listenersEvents);
             this.componentThis.getGreatGrandsonData(this.grandSonAge)
             this.listenersEvents.getGreatGrandsonData(this.grandSonAge)
 
@@ -113,7 +111,6 @@ export default {
         // 获取自定义表格slotvNode
         getCustomSlot() {
             const vNode = this.componentSlots.customSlot[0]
-            console.log(this.componentSlots.customSlot[0]);
             return vNode;
 
         },
@@ -122,8 +119,6 @@ export default {
         this.getCustomEvents(); // 事件定义
         console.log("****this.componentThis****", this.componentThis);
         console.log("****this.componentSlots****", this.componentSlots);
-        console.log("****this.componentScopedSlots****", this.componentScopedSlots.customScopedSlot);
-
     }
 }
 </script>
