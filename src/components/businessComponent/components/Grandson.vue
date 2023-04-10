@@ -1,7 +1,7 @@
 <template >
     <div  class="common-style  grandson">
       
-      <h1>我是孙子</h1>
+      <h1>孙子</h1>
 
       <GreatGrandson/>
     </div>

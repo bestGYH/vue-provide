@@ -1,6 +1,6 @@
 <template>
     <div class="common-style  father">
-      <h1>我是父亲</h1>
+      <h1>父亲</h1>
       
       <son/>
     </div>

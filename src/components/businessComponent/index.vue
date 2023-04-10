@@ -61,9 +61,9 @@ export default {
             componentSlots: this.$slots,
             componentThis: this,
             componentData: this._props,
-            ancestorAge:this.age,
+            // ancestorAge:this.age,
             // 响应式注入
-            // getAncestorAge: () => this.age
+            getAncestorAge: () => this.age
         };
     },
 }

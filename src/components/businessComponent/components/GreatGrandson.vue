@@ -1,6 +1,6 @@
 <template >
     <div class="common-style  greatGrandson">
-        <h1>我是曾孙子</h1>
+        <h1>曾孙子</h1>
         <h2>我的年龄是： <span style="color:sienna">【{{ grandSonAge }}】</span> </h2>
 
         <h3>调用者性别是： <span style="color:fuchsia">【 {{ componentData.isMan ? '男' : '女' }}】</span> </h3>
@@ -42,20 +42,20 @@ export default {
             from: "componentThis",
             default: false
         },
-        ancestorAge: {
-            // 祖先age
-            from: "ancestorAge",
-            default: false
-        },
-        // getAncestorAge: {
+        // ancestorAge: {
         //     // 祖先age
-        //     from: "getAncestorAge",
+        //     from: "ancestorAge",
+        //     default: false
         // },
+        getAncestorAge: {
+            // 祖先age
+            from: "getAncestorAge",
+        },
     },
     computed: {
-        // ancestorAge() {
-        //     return this.getAncestorAge(); // provide 响应式
-        // },
+        ancestorAge() {
+            return this.getAncestorAge(); // provide 响应式
+        },
     },
     data() {
         return {
@@ -88,12 +88,12 @@ export default {
                     ref: "ChildSlot",
                     scopedSlots: ChildSlots
                 })
-
             }
         },
     },
     methods: {
         onChangeSex() {
+            // this.componentThis.$listeners.switchSex()
             this.listenersEvents.switchSex();
         },
         // 获取自定义事件
